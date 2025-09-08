@@ -12,7 +12,7 @@ A Java-based application for analyzing and visualizing datasets of gas emissions
 • Load gas emission and temperature data from CSV files  
 • Compute descriptive statistics (averages, min/max, correlations)  
 • Run multiple analysis sessions with reusable dataset loaders  
-• Display results in text and basic visualizations  
+• Display results in text and visualizations (powered by XChart)  
 
 ---
 
@@ -20,7 +20,7 @@ A Java-based application for analyzing and visualizing datasets of gas emissions
 • Java (OOP and modular design)  
 • CSV dataset parsing  
 • Custom `Stats` class for descriptive analysis  
-• `Visualization` class for simple chart output  
+• `Visualization` class for charts using **XChart**  
 
 ---
 
@@ -40,24 +40,30 @@ java -version
 ```
 If you don’t have Java installed, download it from [Adoptium](https://adoptium.net/) or [Oracle JDK](https://www.oracle.com/java/technologies/downloads/).
 
-### 3. Compile the Project
-From the root of the project directory, compile all `.java` files:
+### 3. Download the XChart Library
+This project uses **XChart** for visualization.  
+Download the JAR from: [https://knowm.org/open-source/xchart/](https://knowm.org/open-source/xchart/)  
+
+Place the JAR file (e.g., `xchart-X.X.X.jar`) in the same directory as your `.java` files, or add it to your classpath.
+
+### 4. Compile the Project
+From the root of the project directory, compile all `.java` files with XChart included in the classpath:
 ```bash
-javac *.java
+javac -cp .:xchart-X.X.X.jar *.java
 ```
 
-### 4. Prepare the Datasets
+### 5. Prepare the Datasets
 Make sure the included CSV files are present in the same directory as your `.java` files:  
 • `gases.csv` – gas dataset  
 • `temps.csv` – temperature dataset  
 
-### 5. Run the Program
-Start the program with:
+### 6. Run the Program
+Run with the XChart JAR in the classpath:
 ```bash
-java Main
+java -cp .:xchart-X.X.X.jar Main
 ```
 
-### 6. Example Workflow
+### 7. Example Workflow
 ```
 === Gas & Temperature Data Analysis ===
 1) Load gas dataset
@@ -69,7 +75,7 @@ java Main
 1. Select **1** to load the gas dataset.  
 2. Select **2** to load the temperature dataset.  
 3. Select **3** to compute statistics like averages, min, max, and correlations.  
-4. Select **4** to view visualization results.  
+4. Select **4** to view visualization results (charts generated with XChart).  
 5. Select **0** to exit the program.  
 
 ---
@@ -82,7 +88,7 @@ java Main
 ├── TempRecord.java       # Represents a single temperature entry
 ├── AnalysisSession.java  # Encapsulates one analysis run
 ├── Stats.java            # Computes statistical metrics
-├── Visualization.java    # Generates simple graphs or summaries
+├── Visualization.java    # Generates charts using XChart
 ├── gases.csv             # Gas dataset
 └── temps.csv             # Temperature dataset
 ```
